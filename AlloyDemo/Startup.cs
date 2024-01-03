@@ -43,6 +43,15 @@ public class Startup
         });
 
         services.AddTinyMceCustomizations();
+
+        services.AddMaxMindGeolocationProvider(options =>
+        {
+            // Download link for MaxMind DB and Locations CSV:
+            // https://dev.maxmind.com/geoip/geoip2/geolite2/
+            var databaseFolderPath = @"";
+            options.DatabasePath = databaseFolderPath + "GeoIP2-City.mmdb";
+            options.LocationsDatabasePath = databaseFolderPath + "GeoIP2-City-Locations-en.csv";
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

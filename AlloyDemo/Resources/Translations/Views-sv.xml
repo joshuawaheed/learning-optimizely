@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <languages>
-  <language name="English" id="en">
+  <language name="Swedish" id="sv">
     <contact>
       <email>E-mail</email>
       <noneselected>No contact selected</noneselected>
@@ -22,7 +22,7 @@
       <listrootempty>News list will be empty since no list root has been set</listrootempty>
     </newspagetemplate>
     <productpage>
-      <changed>Changed:</changed>
+      <changed>ändrats:</changed>
 	</productpage>
     <searchpagetemplate>
       <disabled>EPiServer Search is not configured or is not active for this website.</disabled>

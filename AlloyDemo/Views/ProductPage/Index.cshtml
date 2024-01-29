@@ -5,6 +5,7 @@
 <div class="content">
     <h1 epi-property="@Model.CurrentPage.PageName">
         @Model.CurrentPage.PageName
+        <small>@Html.Translate("/productpage/changed") @(Model.CurrentPage.Changed.ToLongDateString())</small>
     </h1>
     <p class="lead" epi-property="@Model.CurrentPage.MetaDescription">@Model.CurrentPage.MetaDescription</p>
     <div class="clearfix" epi-property="@Model.CurrentPage.MainBody" />

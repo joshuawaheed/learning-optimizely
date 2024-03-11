@@ -3,12 +3,13 @@ using System.ComponentModel.DataAnnotations;
 namespace AlloyTraining.Models.Pages
 {
     [ContentType(
-    Description = "The home page for a website with an area for blocks and potential pages.",
-    DisplayName = "Start",
-    GroupName = SiteGroupNames.Specialized,
-    GUID = "3F2197A7-3AE9-4756-8C74-98A2411D2453",
-    Order = 10)]
-    public class StartPage : PageData
+        Description = "The home page for a website with an area for blocks and potential pages.",
+        DisplayName = "Start",
+        GroupName = SiteGroupNames.Specialized,
+        GUID = "3F2197A7-3AE9-4756-8C74-98A2411D2453",
+        Order = 10)]
+    [SiteStartIcon]
+    public class StartPage : SitePageData
     {
         [CultureSpecific]
         [Display(
@@ -32,5 +33,13 @@ namespace AlloyTraining.Models.Pages
             Name = "Main content area",
             Order = 30)]
         public virtual ContentArea MainContentArea { get; set; }
+
+        [CultureSpecific]
+        [Display(
+            Description = "The footer text will be shown at the bottom of every page.",
+            GroupName = SiteTabNames.SiteSettings,
+            Name = "Footer text",
+            Order = 10)]
+        public virtual string FooterText { get; set; }
     }
 }

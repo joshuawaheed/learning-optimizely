@@ -30,14 +30,7 @@
                         <img src="/gfx/logotype.png" />
                     </div>
                     <div class="span10">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <a href="/en/logout">Log out</a>
-                        }
-                        else
-                        {
-                            <a href="/util/login?ReturnUrl=@Model.CurrentPage.PageLink.ExternalURLFromReference()">Log in</a>
-                        }
+                        @await Html.PartialAsync("_NavigationMenu")
                     </div>
                 </div>
             </div>

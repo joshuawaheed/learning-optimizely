@@ -9,6 +9,7 @@ namespace AlloyTraining.Models.Pages
         GUID = "3F2197A7-3AE9-4756-8C74-98A2411D2453",
         Order = 10)]
     [SiteStartIcon]
+    [AvailableContentTypes(Include = new[] { typeof(StandardPage) })]
     public class StartPage : SitePageData
     {
         [CultureSpecific]

@@ -1,14 +1,18 @@
+using AlloyTraining.Business.Initializers;
 using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
+using EPiServer.Web;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
+using ServiceDescriptor = Microsoft.Extensions.DependencyInjection.ServiceDescriptor;
 
 namespace AlloyTraining
 {
@@ -26,7 +30,6 @@ namespace AlloyTraining
             if (_webHostingEnvironment.IsDevelopment())
             {
                 AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(_webHostingEnvironment.ContentRootPath, "App_Data"));
-
                 services.Configure<SchedulerOptions>(options => options.Enabled = false);
             }
 
@@ -35,6 +38,8 @@ namespace AlloyTraining
                 .AddCms()
                 .AddAdminUserRegistration()
                 .AddEmbeddedLocalization<Startup>();
+
+            services.TryAddEnumerable(ServiceDescriptor.Singleton(typeof(IFirstRequestInitializer), typeof(AddPagesInitializer)));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
